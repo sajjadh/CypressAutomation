@@ -3,14 +3,6 @@
 import failOnConsoleError from "cypress-fail-on-console-error"
 
 
-// let windowErrorSpy;
-
-// Cypress.on('window:before:load', (win) => {
-//   windowErrorSpy = cy.spy(win.console, 'error'); 
-// });
-
-const DELAY = 1000;
-
 context('Verifying the Bad page', () => {
 
   // afterEach(() => {
@@ -26,10 +18,10 @@ context('Verifying the Bad page', () => {
     cy.request({url: link, failOnStatusCode: false })
     .then((response) => {
       //validates the response status
-      expect(response.status).to.equal(400)
+      expect(response.status).to.equal(404)
       
       //validates if there are any console errors
-      failOnConsoleError()
+      // failOnConsoleError()
   
     })
   })

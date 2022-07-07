@@ -26,7 +26,7 @@
 
 
 
-//Use this set of code to validate the fail on console error method
+// //Use this set of code to validate the fail on console error method
 // Cypress.on('window:before:load', (win) => {
 //   cy.spy(win.console, 'error');
 //   cy.spy(win.console, 'warn');

@@ -6,13 +6,10 @@ import failOnConsoleError from "cypress-fail-on-console-error"
 
 context('Verifying the HTML CSS page', () => {
 
-  afterEach(() => {
-    
-  });
+  // afterEach(() => {
+  // });
   
   // beforeEach(() => {
-  //   cy.visit('https://www.w3.org')
-  //   cy.wait()
   // })
 
   const link = 'https://www.w3.org/standards/webdesign/htmlcss'
@@ -20,6 +17,7 @@ context('Verifying the HTML CSS page', () => {
   it('SC01: Verify requesting to HTML CSS page', () => {
     cy.request({url: link, failOnStatusCode: false })
     .then((response) => {
+      //validates the response of the request
       expect(response.status).to.equal(200)
       
     })
@@ -36,16 +34,15 @@ context('Verifying the HTML CSS page', () => {
 
     //skip request command for current page
     if (message == "HTML & CSS"){
-      
+      //do nothing
     }else {
-      
       cy.log("message", message)
       cy.log("Link", $a.prop('href'))
       
       //perform request to verify the captured links
       cy.request({url:$a.prop('href'), failOnStatusCode: false })
         .then((response) => {
-          expect(response.status).to.equal(200)
+          expect(response.status).to.not.equal(404)
         })
 
         // expect($a, message).to.have.attr("href").not.contain("undefined");

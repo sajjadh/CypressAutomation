@@ -19,6 +19,7 @@ context('Verifying the HTML Multi Modal Page', () => {
     it('SC01: Verify requesting to multi modal page', () => {
       cy.request({url: link, failOnStatusCode: false })
       .then((response) => {
+        //validates the response of the request
         expect(response.status).to.equal(200)
         
       })
@@ -45,7 +46,7 @@ context('Verifying the HTML Multi Modal Page', () => {
           //perform request to verify the captured links
           cy.request({url:$a.prop('href'), failOnStatusCode: false })
             .then((response) => {
-              expect(response.status).to.equal(200)
+              expect(response.status).to.not.equal(404)
             })
         }
 
